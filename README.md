@@ -4,6 +4,8 @@ Uma aplicação de lista de tarefas moderna e responsiva construída com React e
 
 <img width="1920" height="945" alt="image" src="https://github.com/user-attachments/assets/1d3186c7-fbf8-41af-9711-af10e623acc6" />
 
+https://minhas-tarefas-01.vercel.app/
+
 
 ## ✨ Funcionalidades
 
@@ -202,3 +204,4 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ---
 
 ⭐ **Se este projeto te ajudou, considere dar uma estrela!** ⭐
+
