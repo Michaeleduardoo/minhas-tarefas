@@ -9,10 +9,14 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 10px;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     sans-serif;
   transition: background 0.3s ease;
+
+  @media (min-width: 768px) {
+    padding: 20px;
+  }
 `;
 
 export const TodoCard = styled.div`
@@ -20,7 +24,7 @@ export const TodoCard = styled.div`
     props.isDarkMode ? "rgba(30, 30, 30, 0.95)" : "rgba(255, 255, 255, 0.95)"};
   backdrop-filter: blur(10px);
   border-radius: 20px;
-  padding: 30px;
+  padding: 20px;
   width: 100%;
   max-width: 500px;
   box-shadow: ${(props) =>
@@ -33,17 +37,28 @@ export const TodoCard = styled.div`
         ? "rgba(255, 255, 255, 0.1)"
         : "rgba(255, 255, 255, 0.2)"};
   transition: all 0.3s ease;
+
+  @media (min-width: 768px) {
+    padding: 30px;
+  }
 `;
 
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 30px;
+    flex-wrap: nowrap;
+  }
 `;
 
 export const Title = styled.h1`
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   background: ${(props) =>
     props.isDarkMode
@@ -55,6 +70,14 @@ export const Title = styled.h1`
   margin: 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+
+  @media (min-width: 480px) {
+    font-size: 2.2rem;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+  }
 `;
 
 export const ThemeToggle = styled.button`
@@ -64,14 +87,20 @@ export const ThemeToggle = styled.button`
       : "linear-gradient(135deg, #667eea, #764ba2)"};
   border: none;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+
+  @media (min-width: 768px) {
+    width: 50px;
+    height: 50px;
+  }
 
   &:hover {
     transform: scale(1.1);
@@ -94,13 +123,19 @@ export const ThemeIcon = styled.span`
 
 export const InputContainer = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 10px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+
+  @media (min-width: 480px) {
+    flex-direction: row;
+    margin-bottom: 25px;
+  }
 `;
 
 export const Input = styled.input`
   flex: 1;
-  padding: 15px 20px;
+  padding: 12px 16px;
   border: 2px solid ${(props) => (props.isDarkMode ? "#404040" : "#e1e5e9")};
   border-radius: 12px;
   font-size: 16px;
@@ -108,6 +143,11 @@ export const Input = styled.input`
   transition: all 0.3s ease;
   background: ${(props) => (props.isDarkMode ? "#2a2a2a" : "#f8f9fa")};
   color: ${(props) => (props.isDarkMode ? "#ffffff" : "#212529")};
+  min-width: 0;
+
+  @media (min-width: 480px) {
+    padding: 15px 20px;
+  }
 
   &:focus {
     border-color: ${(props) => (props.isDarkMode ? "#64b5f6" : "#667eea")};
@@ -125,7 +165,7 @@ export const Input = styled.input`
 `;
 
 export const AddButton = styled.button`
-  padding: 15px 25px;
+  padding: 12px 20px;
   background: ${(props) =>
     props.isDarkMode
       ? "linear-gradient(135deg, #64b5f6, #42a5f5)"
@@ -138,6 +178,12 @@ export const AddButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
+  width: 100%;
+
+  @media (min-width: 480px) {
+    padding: 15px 25px;
+    width: auto;
+  }
 
   &:hover {
     transform: translateY(-2px);
@@ -154,10 +200,11 @@ export const AddButton = styled.button`
 `;
 
 export const StatsContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 25px;
-  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
   background: ${(props) =>
     props.isDarkMode
       ? "linear-gradient(135deg, #2a2a2a, #1a1a1a)"
@@ -165,28 +212,52 @@ export const StatsContainer = styled.div`
   border-radius: 12px;
   border: 1px solid ${(props) => (props.isDarkMode ? "#404040" : "#e1e5e9")};
   transition: all 0.3s ease;
+
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    justify-content: space-around;
+    padding: 20px;
+    margin-bottom: 25px;
+  }
 `;
 
 export const StatItem = styled.div`
   text-align: center;
+  padding: 8px;
 
   span {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: ${(props) => (props.isDarkMode ? "#e0e0e0" : "#495057")};
     transition: color 0.3s ease;
+    display: block;
+  }
+
+  @media (min-width: 480px) {
+    padding: 0;
+
+    span {
+      font-size: 14px;
+    }
   }
 `;
 
 export const FilterContainer = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 8px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+
+  @media (min-width: 480px) {
+    flex-direction: row;
+    margin-bottom: 25px;
+  }
 `;
 
 export const FilterButton = styled.button`
   flex: 1;
-  padding: 12px 16px;
+  padding: 10px 12px;
   background: ${(props) => {
     if (props.active) {
       return props.isDarkMode
@@ -205,10 +276,15 @@ export const FilterButton = styled.button`
       : "2px solid #e1e5e9"};
 
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+
+  @media (min-width: 480px) {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
 
   &:hover {
     background: ${(props) => {
@@ -251,8 +327,8 @@ export const TaskItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 20px;
-  margin-bottom: 12px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
   background: ${(props) => {
     if (props.completed) {
       return props.isDarkMode ? "#1a4d1a" : "#e8f5e8";
@@ -272,6 +348,15 @@ export const TaskItem = styled.div`
     props.isDarkMode
       ? "0 2px 8px rgba(0, 0, 0, 0.2)"
       : "0 2px 8px rgba(0, 0, 0, 0.05)"};
+  flex-wrap: wrap;
+  gap: 8px;
+
+  @media (min-width: 480px) {
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    flex-wrap: nowrap;
+    gap: 0;
+  }
 
   &:hover {
     transform: translateY(-2px);
@@ -284,7 +369,7 @@ export const TaskItem = styled.div`
 
 export const TaskText = styled.span`
   flex: 1;
-  font-size: 16px;
+  font-size: 14px;
   color: ${(props) => {
     if (props.completed) {
       return props.isDarkMode ? "#888" : "#6c757d";
@@ -294,12 +379,23 @@ export const TaskText = styled.span`
   text-decoration: ${(props) => (props.completed ? "line-through" : "none")};
   font-weight: 500;
   transition: color 0.3s ease;
+  word-break: break-word;
+  min-width: 0;
+
+  @media (min-width: 480px) {
+    font-size: 16px;
+  }
 `;
 
 export const TaskActions = styled.div`
   display: flex;
-  gap: 4px;
+  gap: 3px;
   align-items: center;
+  flex-shrink: 0;
+
+  @media (min-width: 480px) {
+    gap: 4px;
+  }
 `;
 
 export const EditInput = styled.input`
@@ -325,8 +421,8 @@ export const EditInput = styled.input`
 `;
 
 export const EditButton = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border: none;
   border-radius: 8px;
   background: ${(props) =>
@@ -334,12 +430,18 @@ export const EditButton = styled.button`
       ? "linear-gradient(135deg, #ff9800, #f57c00)"
       : "linear-gradient(135deg, #ff9800, #f57c00)"};
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 480px) {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
 
   &:hover {
     transform: scale(1.1);
@@ -348,8 +450,8 @@ export const EditButton = styled.button`
 `;
 
 export const SaveButton = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border: none;
   border-radius: 8px;
   background: ${(props) =>
@@ -357,12 +459,18 @@ export const SaveButton = styled.button`
       ? "linear-gradient(135deg, #2196f3, #1976d2)"
       : "linear-gradient(135deg, #2196f3, #1976d2)"};
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 480px) {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
 
   &:hover {
     transform: scale(1.1);
@@ -371,8 +479,8 @@ export const SaveButton = styled.button`
 `;
 
 export const CancelButton = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border: none;
   border-radius: 8px;
   background: ${(props) =>
@@ -380,12 +488,18 @@ export const CancelButton = styled.button`
       ? "linear-gradient(135deg, #e91e63, #c2185b)"
       : "linear-gradient(135deg, #e91e63, #c2185b)"};
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 480px) {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
 
   &:hover {
     transform: scale(1.1);
@@ -394,8 +508,8 @@ export const CancelButton = styled.button`
 `;
 
 export const CompleteButton = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border: none;
   border-radius: 8px;
   background: ${(props) => {
@@ -409,12 +523,18 @@ export const CompleteButton = styled.button`
       : "linear-gradient(135deg, #28a745, #20c997)";
   }};
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 480px) {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
 
   &:hover {
     transform: scale(1.1);
@@ -423,8 +543,8 @@ export const CompleteButton = styled.button`
 `;
 
 export const DeleteButton = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border: none;
   border-radius: 8px;
   background: ${(props) =>
@@ -432,12 +552,18 @@ export const DeleteButton = styled.button`
       ? "linear-gradient(135deg, #f44336, #d32f2f)"
       : "linear-gradient(135deg, #dc3545, #e74c3c)"};
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 480px) {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
 
   &:hover {
     transform: scale(1.1);
@@ -447,22 +573,35 @@ export const DeleteButton = styled.button`
 
 export const EmptyState = styled.div`
   text-align: center;
-  padding: 40px 20px;
+  padding: 30px 15px;
   color: ${(props) => (props.isDarkMode ? "#888" : "#6c757d")};
   transition: color 0.3s ease;
+
+  @media (min-width: 480px) {
+    padding: 40px 20px;
+  }
 `;
 
 export const EmptyIcon = styled.div`
-  font-size: 4rem;
-  margin-bottom: 16px;
+  font-size: 3rem;
+  margin-bottom: 12px;
   opacity: 0.5;
   transition: opacity 0.3s ease;
+
+  @media (min-width: 480px) {
+    font-size: 4rem;
+    margin-bottom: 16px;
+  }
 `;
 
 export const EmptyText = styled.p`
-  font-size: 16px;
+  font-size: 14px;
   margin: 0;
   font-weight: 500;
   color: ${(props) => (props.isDarkMode ? "#888" : "#6c757d")};
   transition: color 0.3s ease;
+
+  @media (min-width: 480px) {
+    font-size: 16px;
+  }
 `;
